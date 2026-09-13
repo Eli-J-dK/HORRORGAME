@@ -10,6 +10,15 @@ size = Vector3(10, 2, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_b1pf8"]
 size = Vector3(10, 2, 10)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_scsml"]
+
+[sub_resource type="Sky" id="Sky_b1pf8"]
+sky_material = SubResource("ProceduralSkyMaterial_scsml")
+
+[sub_resource type="Environment" id="Environment_scsml"]
+background_mode = 2
+sky = SubResource("Sky_b1pf8")
+
 [node name="main" type="Node3D" unique_id=682175594]
 
 [node name="ground" type="StaticBody3D" parent="." unique_id=446289884]
@@ -24,3 +33,9 @@ mesh = SubResource("BoxMesh_b1pf8")
 
 [node name="player" parent="." unique_id=1631615348 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=996186773]
+environment = SubResource("Environment_scsml")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=290042843]
+transform = Transform3D(0.12774116, -0.39788273, 0.9084997, 0.05540002, 0.9174363, 0.3940069, -0.9902592, 0, 0.13923709, 10, 10, 0)
