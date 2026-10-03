@@ -1,15 +1,19 @@
-extends Camera3D
+extends Node3D
+
+@onready var camera := $camera
 
 @export var sens: float
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("esc"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.screen_relative.x * sens)
-		rotate_x(-event.screen_relative.y * sens)
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			rotate_y(-event.relative.x * sens)
+			camera.rotate_x(-event.relative.y * sens)
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("esc"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
