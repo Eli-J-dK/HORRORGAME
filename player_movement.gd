@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var sprint_speed : float
 @export var JUMP_VELOCITY: float
 @export var slowdown : float
+var can_sprint : bool
 
 var max_stam : float = 100.0
 var current_stam : float
@@ -27,6 +28,11 @@ func _on_stam_regen_timer_timeout() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if current_stam <= 0:
+		can_sprint = false
+	elif current_stam >= 20:
+		can_sprint = true
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -43,20 +49,21 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if direction:
-		if Input.is_action_pressed("sprint") and current_stam > 0 and is_on_floor():
-				velocity.x = direction.x * sprint_speed
-				velocity.z = direction.z * sprint_speed
-				
-				stam_timer.stop()
-				can_regen = false
-				current_stam -= stam_gen * delta
-				
-				new_stam_state = 1
+		if Input.is_action_pressed("sprint") and can_sprint and is_on_floor():
+			velocity.x = direction.x * sprint_speed
+			velocity.z = direction.z * sprint_speed
+			
+			stam_timer.stop()
+			can_regen = false
+			current_stam -= stam_gen * delta
+			
+			new_stam_state = 1
+			
 		elif is_on_floor():
-				velocity.x = direction.x * SPEED
-				velocity.z = direction.z * SPEED
-				
-				new_stam_state = 0
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+			
+			new_stam_state = 0
 		else:
 			velocity.x = move_toward(velocity.x , direction.x * SPEED * 0.5 , slowdown)
 			velocity.z = move_toward(velocity.z , direction.z * SPEED * 0.5 , slowdown)
