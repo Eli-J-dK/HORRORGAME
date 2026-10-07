@@ -13,7 +13,7 @@ script = ExtResource("1_4flbx")
 SPEED = 5.0
 sprint_speed = 10.0
 JUMP_VELOCITY = 5.0
-slowdown = 0.5
+slowdown = 0.3
 stam_gen = 5.0
 jump_stam = 20.0
 
