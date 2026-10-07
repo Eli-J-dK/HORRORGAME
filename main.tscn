@@ -58,6 +58,7 @@ environment = SubResource("Environment_scsml")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=290042843]
 transform = Transform3D(0.12774116, -0.39788273, 0.9084997, 0.05540002, 0.9174363, 0.3940069, -0.9902592, 0, 0.13923709, 10, 10, 0)
+light_energy = 0.8
 
 [node name="scene items" type="Node3D" parent="." unique_id=422919623]
 
