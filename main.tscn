@@ -7,7 +7,7 @@
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_lquwl"]
 sun_disk_scale = 0.0
-ground_color = Color(0.728822, 0.728822, 0.728822, 1)
+ground_color = Color(0.42352942, 0.7294118, 0.7294118, 1)
 night_sky = ExtResource("2_h2yge")
 
 [sub_resource type="Sky" id="Sky_b1pf8"]
