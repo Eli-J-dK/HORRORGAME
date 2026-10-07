@@ -6,7 +6,13 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b1pf8"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(1, 1, 0, 1)
+metallic = 1.0
+clearcoat_enabled = true
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_b1pf8"]
+material = SubResource("StandardMaterial3D_1bvp3")
 
 [node name="player" type="CharacterBody3D" unique_id=1631615348]
 script = ExtResource("1_4flbx")
