@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://uhdo8vnhim6o"]
 
-[ext_resource type="Script" uid="uid://kfxampth4347" path="res://scripts/player_movement.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://dxj8oqrp7405i" path="res://scripts/inventory.gd" id="2_i3pqv"]
-[ext_resource type="Script" uid="uid://d3iel1bwbcted" path="res://scripts/camera.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://kfxampth4347" path="res://scripts/player/player_movement.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://dxj8oqrp7405i" path="res://scripts/inventory.gd" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://d3iel1bwbcted" path="res://scripts/player/camera.gd" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b1pf8"]
 
@@ -15,7 +15,7 @@ clearcoat_enabled = true
 material = SubResource("StandardMaterial3D_1bvp3")
 
 [node name="player" type="CharacterBody3D" unique_id=1631615348]
-script = ExtResource("1_4flbx")
+script = ExtResource("1_qhqgy")
 SPEED = 5.0
 sprint_speed = 10.0
 JUMP_VELOCITY = 5.0
@@ -24,7 +24,7 @@ stam_gen = 5.0
 jump_stam = 20.0
 
 [node name="inventory" type="Node3D" parent="." unique_id=909326674]
-script = ExtResource("2_i3pqv")
+script = ExtResource("2_dqkch")
 
 [node name="health" type="Node3D" parent="." unique_id=144862344]
 
@@ -35,7 +35,7 @@ shape = SubResource("CapsuleShape3D_b1pf8")
 mesh = SubResource("CapsuleMesh_b1pf8")
 
 [node name="neck" type="Node3D" parent="." unique_id=401461115]
-script = ExtResource("2_onrkg")
+script = ExtResource("3_qhqgy")
 sens = 0.005
 
 [node name="camera" type="Camera3D" parent="neck" unique_id=1963924525]
